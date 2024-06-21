@@ -1,0 +1,66 @@
+---
+import LastEpisodeToAir from '../../components/LastEpisodeToAir.astro';
+import NextEpisodeToAir from '../../components/NextEpisodeToAir.astro';
+import TVSeasons from '../../components/TVSeasons.astro';
+import TableDetails from '../../components/TableDetails.astro'
+import Layout from '../../layouts/Layout.astro';
+import { getDataby } from '../../services/tmdbApi'
+
+const { id } = Astro.params
+
+let data
+
+if (id){
+    data = await getDataby({ id })
+}
+
+---
+
+<Layout title=`DB ${data.name}`>
+    <section class="mx-auto w-full p-12 pb-0 flex flex-wrap justify-between gap-10">
+		<section class="w-2/12">
+            <article class="border rounded-xl">
+                <a href=`/popular`>
+                <img transition:name=`dato ${id}` src={ data.poster_path != null ? 
+                    `https://image.tmdb.org/t/p/w500` + data.poster_path 
+                    : 
+                    `/public/placeholder-image.webp`} 
+                    alt={data.original_name} 
+                    class="rounded-xl">
+                </a>
+            </article>
+		</section>
+
+        <section class="w-3/12 flex flex-col justify-between">
+            <header>
+                <h1 class="text-4xl font-nunito pb-4">
+                    {data.name}
+                </h1>
+                <p class="text-ellipsis h-6">
+                    {data.overview}
+                </p>
+            </header>
+            <TableDetails id={id} />
+        </section>
+
+        <LastEpisodeToAir />
+
+        <NextEpisodeToAir />
+        
+    </section>
+
+
+    { (data.seasons.length > 1 ? data.seasons.slice(1) : data.seasons).map((data: any) => (
+        <section class="p-12">
+            <section class="mx-auto w-full flex gap-10">
+                <p class="text-3xl font-nunito pb-4">
+                    {data.name}
+                </p>
+            </section>
+
+            <section class="mx-auto w-full grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+                <TVSeasons id={id} season={data.season_number} />
+            </section>
+        </section>
+    ))}
+</Layout>

@@ -1,0 +1,38 @@
+---
+import { getTVSeasons } from '../services/tmdbApi'
+
+const { id, season } = Astro.props;
+
+// let data
+// if (id){
+//     data = await getTVSeasons({ id, season })
+// }
+
+// let totalEps = data.episodes
+
+
+const episodes = await getTVSeasons({id, season})
+
+// console.log(data.episodes)
+---
+
+{ episodes.map((data: any) => (
+
+    
+    <article class="h-48 border rounded-xl flex flex-col justify-between bg-center bg-cover"
+    style={`background-image:url('${data.still_path === null ? '/public/placeholder-image.webp' : 'https://image.tmdb.org/t/p/w500/'+data.still_path}')`}>
+        <header class="p-4">
+            <p class="text-xs drop-shadow-md font-semibold">---</p>
+        </header>
+        <aside class="pt-6 p-4 rounded-xl bg-gradient-to-t from-slate-950">
+            <p class="font-roboto text-xs">
+                <span class="font-semibold">Titulo: </span> {data.name}
+            </p>
+            <p class="font-roboto text-xs">
+                <span class="font-semibold">Temporada: </span> {data.season_number} - <span class="font-semibold">Episodio: </span> {data.episode_number}
+            </p>
+        </aside>
+    </article>
+
+
+))}

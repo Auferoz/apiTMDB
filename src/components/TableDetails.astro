@@ -1,0 +1,55 @@
+---
+import { getDataby } from '../services/tmdbApi'
+
+const { id } = Astro.params
+
+let dato
+
+if (id){
+    dato = await getDataby({ id })
+}
+
+---
+
+<section class="pt-6">
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 rounded-t-xl">
+                        Creado Por
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <th scope="row" class="px-6 py-4 font-medium flex text-gray-900 whitespace-nowrap dark:text-white">
+                            { dato.created_by.map((created_by: any) => (
+                                <p class="ps-1"> {created_by.name} , </p>
+                            ))}
+                        </th>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Generos
+                    </th>
+                </tr>
+            </thead>
+            <tbody>   
+                    <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-b-xl">
+                        <p class="ps-1 flex">
+                        {dato.genres.map((genre: any) => (
+                            <span> &nbsp; {genre.name + ' '} , </span>
+                        ))}      
+                        </p>
+                      </th>
+                    </tr>                     
+            </tbody>
+        </table>
+    </div>
+</section>

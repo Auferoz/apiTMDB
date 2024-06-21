@@ -1,0 +1,38 @@
+---
+import { getDataby } from '../services/tmdbApi'
+
+const { id } = Astro.params
+
+let dato
+
+if (id){
+    dato = await getDataby({ id })
+}
+
+---
+
+<section class="w-3/12">
+    <article class="border rounded-xl h-full flex flex-col justify-between bg-center bg-cover"
+        style=`background-image:url('${dato.last_episode_to_air?.still_path != null ? 'https://image.tmdb.org/t/p/original'+dato.last_episode_to_air?.still_path : '/public/placeholder-image.webp' }')`
+    >
+        <header class="p-4">
+            <p class="text-xs font-semibold text-shadow-black">Ultimo Episodio:</p>
+        </header>
+        <aside class="pt-6 p-4 rounded-xl bg-gradient-to-t from-slate-950">
+            <p class="font-roboto text-xs">
+                <span class="font-semibold">Titulo:</span> {dato.last_episode_to_air?.name}
+            </p>
+            <p class="font-roboto text-xs">
+                <span class="font-semibold">Temporada:</span> {dato.last_episode_to_air?.season_number} - <span class="font-semibold">Episodio:</span> {dato.last_episode_to_air?.episode_number}
+            </p>
+            <p class="font-roboto text-xs">
+                <span class="font-semibold">Estreno:</span> {dato.last_episode_to_air?.air_date}
+            </p>
+        </aside>
+    </article>
+</section>
+<style>
+    .text-shadow-black {
+        text-shadow: 0px 0px 5px #000000;
+    }
+</style>

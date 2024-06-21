@@ -1,0 +1,25 @@
+---
+import { getDataPopular } from '../services/tmdbApi';
+
+interface Props {
+	pageView: number;
+}
+
+const { pageView } = Astro.props;
+
+const popular = await getDataPopular({pageView})
+
+---
+
+{ popular.map(data => (
+    <article class="border rounded-xl transition hover:scale-105 hover:shadow-md hover:shadow-blue-500/50 cursor-pointer">
+        <a href={`/Details/${data.id}`}>
+            <img transition:name={`dato ${data.id}`} src={ data.poster_path != null ? 
+            `https://image.tmdb.org/t/p/w500` + data.poster_path 
+            : 
+            `/public/placeholder-image.webp`} 
+            alt={data.original_name} 
+            class="rounded-xl h-full object-fill">
+        </a>
+    </article>
+))}

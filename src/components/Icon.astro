@@ -1,0 +1,14 @@
+---
+import DeviceTv from "./icons/DeviceTv.astro";
+import ListDetails from "./icons/ListDetails.astro";
+
+const iconMap = {
+
+    devicetv: DeviceTv,
+    listdetails: ListDetails,
+}
+
+const IconComponent = iconMap[Astro.props.name];
+---
+
+<IconComponent />

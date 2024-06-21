@@ -1,0 +1,58 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		color-scheme: light dark;
+	}
+
+	* { margin: 0; padding: 0; }
+	*, *::before, *::after { box-sizing: border-box; }
+
+	body { min-height: 100dvh; }
+	input, button, textarea, select { font: inherit; }
+
+	p { text-wrap: pretty; }
+	hl, h2, h3, h4, h5, h6 { text-wrap: balance; }
+
+	img, video, svg { height: auto; max-width: 100%; }
+
+	@media (prefers-reduced-motion: reduce) {
+
+		*, *::before, *::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+			transition: none;
+		}
+	}
+
+	.font-nunito {
+		font-family: 'Nunito Variable', sans-serif;
+	}
+	.font-roboto {
+		font-family: 'Roboto', sans-serif;
+	}
+</style>
