@@ -19,8 +19,9 @@ const episodes = await getTVSeasons({id, season})
 { episodes.map((data: any) => (
 
     
+    // style={`background-image:url('${data.still_path === null ? '/public/placeholder-image.webp' : 'https://image.tmdb.org/t/p/w500/'+data.still_path}')`}>
     <article class="h-48 border rounded-xl flex flex-col justify-between bg-center bg-cover"
-    style={`background-image:url('${data.still_path === null ? '/public/placeholder-image.webp' : 'https://image.tmdb.org/t/p/w500/'+data.still_path}')`}>
+    style={`${data.still_path === null ? 'background-color:#374151;' : 'background-image:url(https://image.tmdb.org/t/p/w500'+data.still_path+')' } `}>
         <header class="p-4">
             <p class="text-xs drop-shadow-md font-semibold">---</p>
         </header>

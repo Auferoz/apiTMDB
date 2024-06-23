@@ -63,3 +63,20 @@ export const getTVSeasons = async ({id, season}: { id: string, season: string}) 
       return episodes
 }
 
+// TODO: Trakt TV
+
+export const getTraktTvProgress = async () => {
+  const options = {
+      method: 'GET',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer [access_token]',
+      'trakt-api-version': '2',
+      'trakt-api-key': '[client_id]',
+      }
+    };
+    
+    const resList = await fetch('https://private-anon-be7f222ddf-trakt.apiary-mock.com/shows/game-of-thrones/progress/watched', options);
+    const { items: list24 } = await resList.json() as APIListDetails
+    return list24
+}
