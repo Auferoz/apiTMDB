@@ -2,7 +2,6 @@
 import DeviceTvIcon from "./icons/DeviceTv.astro";
 import ChartBarPopularIcon from "./icons/ChartBarPopular.astro";
 import ClipBoardListIcon from "./icons/ClipBoardList.astro";
-
 interface Props {
     navActive: string;
 }
@@ -32,7 +31,7 @@ let inactive = 'text-white bg-blue-700 rounded md:bg-transparent md:text-zinc-30
             <li>
                 <a href="/" class=`font-nunito flex items-center py-2 px-3 md:p-0 ${ navActive === 'home' ? active : inactive}`>
                     <ChartBarPopularIcon class="h-4" />
-                    Home 
+                    Home  
                 </a>
             </li>
             <li>
