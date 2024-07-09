@@ -3,7 +3,7 @@ import { type TvSeasonsDetails } from '../types/tvSeasonsDetails'
 import { type TvPopular } from '../types/tvPopular'
 import { type TvSerieDetails } from '../types/tvSerieDetails'
 
-let auth = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTc2NDNjNzU4MzJiNWQ2ZjZjNjZlMTBmMjYwNjE4YiIsInN1YiI6IjYwOWU4ZWFiZTYzNTcxMDAyYTZkODQ5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u3Z_Oqp5hEk1YWnYKoTFQa9lZPPWS8-EUm018oeZxjI'
+let auth = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTc2NDNjNzU4MzJiNWQ2ZjZjNjZlMTBmMjYwNjE4YiIsIm5iZiI6MTcyMDU1MTk2MS43MTA1NjIsInN1YiI6IjYwOWU4ZWFiZTYzNTcxMDAyYTZkODQ5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.obxcknX0StWcfioMFYVzBYm11vgIuQcsz7ieL9SHwf0'
 
 let Language = 'en' // es -> Español - en -> English
 
