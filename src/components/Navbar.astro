@@ -2,6 +2,7 @@
 import DeviceTvIcon from "./icons/DeviceTv.astro";
 import ChartBarPopularIcon from "./icons/ChartBarPopular.astro";
 import ClipBoardListIcon from "./icons/ClipBoardList.astro";
+import ThemeTogger from "./ThemeTogger.astro";
 interface Props {
     navActive: string;
 }
@@ -14,7 +15,7 @@ let inactive = 'text-white bg-blue-700 rounded md:bg-transparent md:text-zinc-30
 
 
 ---
-<nav class="fixed w-full z-20 top-0 start-0 border-zinc-900 bg-zinc-900 shadow-zing-800 shadow-md">
+<nav class="fixed w-full z-20 top-0 start-0 bg-sky-100 dark:border-zinc-900 dark:bg-zinc-900 shadow-zing-800 shadow-md">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <DeviceTvIcon />
@@ -57,4 +58,3 @@ let inactive = 'text-white bg-blue-700 rounded md:bg-transparent md:text-zinc-30
     </div>
 </nav>
 <div class="mb-2">&nbsp;</div>
-  
