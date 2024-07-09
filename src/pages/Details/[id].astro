@@ -43,11 +43,11 @@ if (id){
             <TableDetails id={id}/>
         </section>
 
-        <section class="w-full block">
+        <section class="w-full md:w-3/12">
             <LastEpisodeToAir />
         </section>
 
-        <section class="w-full block">
+        <section class="w-full md:w-3/12">
             <NextEpisodeToAir />
         </section>
         
@@ -62,7 +62,7 @@ if (id){
                 </p>
             </section>
 
-            <section class="mx-auto w-full grid gap-4 grid-cols-2 hover:grid-cols-1 transition-all sm:grid-cols-3 md:grid-cols-5">
+            <section class="mx-auto w-full grid gap-4 grid-cols-2 transition-all sm:grid-cols-3 md:grid-cols-5">
                 <TVSeasons id={id} season={data.season_number} />
             </section>
         </section>
