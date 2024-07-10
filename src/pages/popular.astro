@@ -1,6 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import PopularCards from '../components/PopularCards.astro';
+import Counter from '../components/vueComponents/Counter.vue';
 import Layout from '../layouts/Layout.astro';
 
 
@@ -13,7 +14,11 @@ let pageView = 1
 
 	<Navbar navActive="popular" />
 
+
 	<main class="w-full mx-auto p-12">
+		<section transition:persist="Counter">
+			<Counter client:load /> 
+		</section>
 		<section class="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
 			<PopularCards pageView={pageView} />
 		</section>
